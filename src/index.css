@@ -1,0 +1,165 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 270 100% 56%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 165 100% 46%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 326 100% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 270 100% 56%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 270 100% 56%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 270 100% 56%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-gambling-dark text-foreground;
+    background-color: #0a0a0a;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gambling-dark;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gambling-muted rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gambling-primary bg-opacity-70;
+  }
+  
+  /* Add soft glow to primary elements */
+  .glow-primary {
+    box-shadow: 0 0 10px rgba(107, 33, 255, 0.4);
+  }
+  
+  .glow-accent {
+    box-shadow: 0 0 10px rgba(255, 33, 198, 0.4);
+  }
+  
+  .glow-secondary {
+    box-shadow: 0 0 10px rgba(0, 237, 181, 0.4);
+  }
+}
+
+@layer components {
+  .betting-option {
+    @apply relative px-4 py-3 bg-gambling-card border border-gambling-muted
+    hover:border-gambling-accent transition-all duration-200 cursor-pointer
+    flex items-center justify-between;
+  }
+
+  .betting-option-selected {
+    @apply border-gambling-accent bg-gambling-accent bg-opacity-10 glow-accent;
+  }
+  
+  .betting-question-card {
+    @apply bg-gambling-card border-gambling-muted hover:border-gambling-accent/40 
+    transition-colors duration-300 shadow-md overflow-hidden;
+  }
+
+  .chat-message {
+    @apply py-2 px-3 hover:bg-gambling-muted hover:bg-opacity-40 rounded-md transition-colors;
+  }
+  
+  /* Animated pulse for live indicator */
+  .pulse-dot {
+    @apply h-2 w-2 rounded-full bg-gambling-accent;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(0.8);
+    }
+  }
+  
+  /* Odds badge */
+  .odds-badge {
+    @apply flex items-center gap-1 px-2 py-1 rounded-md bg-gambling-secondary/10 text-gambling-secondary 
+    font-medium text-sm border border-gambling-secondary/20;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+@keyframes pulse-betting {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-betting {
+  animation: pulse-betting 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
